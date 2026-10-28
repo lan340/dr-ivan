@@ -1,0 +1,6 @@
+{
+  "name": "Поздравление Другу — Пазл Впечатлений",
+  "description": "Интерактивный модульный сайт-поздравление для друга с визуальным редактором и возможностью легкого запуска на любом хостинге.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
