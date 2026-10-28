@@ -1733,22 +1733,28 @@ const serveSuperfightersPlayerHtml = (_req: express.Request, res: express.Respon
     }
   </style>
   <script>
-    try {
-      Object.defineProperty(navigator, 'gpu', { value: undefined, configurable: true });
-    } catch (e) {}
-    window.RufflePlayer = window.RufflePlayer || {};
-    window.RufflePlayer.config = {
-      preferredRenderer: "webgl",
-      autoplay: "on",
-      unmuteOverlay: "visible",
-      backgroundColor: "#000000",
-      letterbox: "on",
-      warnOnUnsupportedContent: false,
-      contextMenu: "on",
-      scale: "showAll",
-      forceScale: true,
-      quality: "high"
-    };
+    (function() {
+      var urlParams = new URLSearchParams(window.location.search);
+      var rParam = urlParams.get('renderer');
+      // 'wgpu-webgl' — полнофункциональный движок Ruffle с поддержкой сложных blend modes
+      // (Multiply, Screen, Overlay) и фильтров ColorMatrixFilter.
+      // Обычный 'webgl' в Ruffle не поддерживает режимы наложения и рисует оверлеи сплошным цветом!
+      var chosenRenderer = rParam === 'auto' ? null : (rParam || 'wgpu-webgl');
+
+      window.RufflePlayer = window.RufflePlayer || {};
+      window.RufflePlayer.config = {
+        preferredRenderer: chosenRenderer,
+        autoplay: "on",
+        unmuteOverlay: "visible",
+        backgroundColor: "#000000",
+        letterbox: "on",
+        warnOnUnsupportedContent: false,
+        contextMenu: "on",
+        scale: "showAll",
+        forceScale: true,
+        quality: "high"
+      };
+    })();
   </script>
 </head>
 <body>
@@ -1826,7 +1832,11 @@ const serveSuperfightersPlayerHtml = (_req: express.Request, res: express.Respon
           try {
             await addScriptTag("https://cdn.jsdelivr.net/npm/@ruffle-rs/ruffle/ruffle.js");
           } catch (e1) {
-            await addScriptTag("https://unpkg.com/@ruffle-rs/ruffle/ruffle.js");
+            try {
+              await addScriptTag("https://unpkg.com/@ruffle-rs/ruffle/ruffle.js");
+            } catch (e2) {
+              await addScriptTag("/assets/ruffle/ruffle.js");
+            }
           }
 
           var swfBytes = decodeBase64Parts(window.__SF_SWF_PARTS__ || []);
@@ -1841,10 +1851,15 @@ const serveSuperfightersPlayerHtml = (_req: express.Request, res: express.Respon
           player.addEventListener("loadedmetadata", function() { forceHideSplash(player); });
           player.addEventListener("loadeddata", function() { forceHideSplash(player); });
 
+          var urlParams = new URLSearchParams(window.location.search);
+          var rParam = urlParams.get('renderer');
+          var chosenRenderer = rParam === 'auto' ? null : (rParam || 'wgpu-webgl');
+
           var loadConfig = {
             data: swfBytes,
             swfFileName: "575163_Superfighters.swf",
             base: "https://uploads.ungrounded.net/575000/",
+            preferredRenderer: chosenRenderer,
             urlRewriteRules: [
               [/^https?:\\/\\/(www\\.)?ngads\\.com\\/gateway_v2\\.php.*/i, window.location.origin + "/api/ngads-gateway"]
             ],

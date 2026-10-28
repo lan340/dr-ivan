@@ -98,7 +98,7 @@ function buildStandaloneSuperfightersHtml(joinedBase64: string): string {
   <script>
     window.RufflePlayer = window.RufflePlayer || {};
     window.RufflePlayer.config = {
-      preferredRenderer: "webgl",
+      preferredRenderer: "wgpu-webgl",
       autoplay: "on",
       unmuteOverlay: "visible",
       backgroundColor: "#000000",
@@ -177,7 +177,7 @@ const SuperfightersDirectPlayer: React.FC<{
 
         window.RufflePlayer = window.RufflePlayer || {};
         window.RufflePlayer.config = {
-          preferredRenderer: 'webgl',
+          preferredRenderer: 'wgpu-webgl',
           autoplay: 'on',
           unmuteOverlay: 'visible',
           backgroundColor: '#000000',
@@ -348,6 +348,7 @@ export const RetroArcadePage: React.FC<RetroArcadePageProps> = ({
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [useCleanProxy, setUseCleanProxy] = useState<boolean>(true);
+  const [superfightersRenderer, setSuperfightersRenderer] = useState<'wgpu-webgl' | 'canvas' | 'webgpu' | 'auto'>('wgpu-webgl');
   const [iframeKey, setIframeKey] = useState<number>(0);
   const [showExportModal, setShowExportModal] = useState<boolean>(false);
   const [isDownloadingStandalone, setIsDownloadingStandalone] = useState<boolean>(false);
@@ -404,7 +405,7 @@ export const RetroArcadePage: React.FC<RetroArcadePageProps> = ({
   const effectiveGameUrl = React.useMemo(() => {
     if (!activeGame) return '';
     if (isSuperfightersActive) {
-      return '/api/retro-mirror/superfighters/index.html';
+      return `/api/retro-mirror/superfighters/index.html?renderer=${superfightersRenderer}`;
     }
     if (useCleanProxy) {
       if (activeGame.proxyUrl) {
@@ -412,7 +413,7 @@ export const RetroArcadePage: React.FC<RetroArcadePageProps> = ({
       }
     }
     return activeGame.embedUrl;
-  }, [activeGame, isSuperfightersActive, useCleanProxy]);
+  }, [activeGame, isSuperfightersActive, useCleanProxy, superfightersRenderer]);
 
   const handleDownloadStandaloneHtml = async () => {
     try {
@@ -883,6 +884,28 @@ export const RetroArcadePage: React.FC<RetroArcadePageProps> = ({
 
           {/* Кнопки управления окном игры */}
           <div className="flex flex-wrap items-center gap-2">
+            {/* Переключатель графического движка для Superfighters */}
+            {isSuperfightersActive && (
+              <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-slate-800 bg-slate-900 text-xs">
+                <span className="text-slate-400 font-medium">Графика:</span>
+                <select
+                  value={superfightersRenderer}
+                  onChange={(e) => {
+                    setSuperfightersRenderer(e.target.value as any);
+                    setIframeKey((prev) => prev + 1);
+                  }}
+                  title="Выбор графического рендерера для Flash (решает проблемы с наложением цветов и фильтрами)"
+                  aria-label="Выбор графического рендерера для Flash"
+                  className="bg-slate-950 border border-slate-700/80 rounded px-2 py-0.5 text-amber-300 font-medium text-xs focus:outline-none focus:border-amber-400 cursor-pointer"
+                >
+                  <option value="wgpu-webgl">WGPU WebGL (Полные цвета и фильтры)</option>
+                  <option value="canvas">Canvas (2D софт-рендер без артефактов)</option>
+                  <option value="webgpu">WebGPU (Нативный)</option>
+                  <option value="auto">Автовыбор</option>
+                </select>
+              </div>
+            )}
+
             {/* Переключатель чистого прокси / прямого URL (если у игры есть чистое зеркало) */}
             {activeGame.proxyUrl && (
               <button
