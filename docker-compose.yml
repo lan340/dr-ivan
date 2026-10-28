@@ -1,0 +1,44 @@
+services:
+  # ---------------------------------------------------------------------------
+  # СЕРВИС ДЛЯ РАЗРАБОТКИ И ТЕСТОВ (По умолчанию: docker compose up)
+  # - Работает без установки Node.js на хост-системе
+  # - Поддерживает горячую перезагрузку (Hot-Reload / Vite HMR)
+  # - Изменения в коде мгновенно видны в браузере
+  # ---------------------------------------------------------------------------
+  dev:
+    build:
+      context: .
+      target: dev
+    container_name: vanya-dr-dev
+    ports:
+      - "3000:3000"
+    volumes:
+      # Пробрасываем проект для живого обновления кода
+      - .:/app
+      # Изолируем node_modules контейнера от хоста
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # СЕРВИС ДЛЯ ПРОДАКШЕНА (Запуск: docker compose --profile prod up -d prod)
+  # - Полная сборка фронтенда в dist/
+  # - Оптимизированный контейнер без dev-зависимостей
+  # ---------------------------------------------------------------------------
+  prod:
+    build:
+      context: .
+      target: prod
+    container_name: vanya-dr-prod
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+    profiles:
+      - prod
+    restart: unless-stopped

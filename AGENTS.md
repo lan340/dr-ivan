@@ -168,24 +168,24 @@ pm2 start "npx tsx server.ts" --name "str-vanya-dr" --env NODE_ENV=production
 ```
 Сервер автоматически обнаружит папку `dist/` и будет отдавать скомпилированный фронтенд вместе со всеми `/api/` роутами.
 
-#### Вариант Б: Docker контейнер
-Приложение легко упаковывается в Docker:
-```dockerfile
-FROM node:22-alpine
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci
-COPY . .
-RUN npm run build
-EXPOSE 3000
-ENV NODE_ENV=production
-CMD ["npx", "tsx", "server.ts"]
-```
-Сборка и запуск:
-```bash
-docker build -t vanya-dr-site .
-docker run -d -p 3000:3000 --name vanya-site vanya-dr-site
-```
+#### Вариант Б: Docker & Docker Compose (Рекомендуется для изолированного запуска)
+Проект полностью настроен для запуска в Docker без необходимости ставить Node.js на хост:
+
+* **Для тестирования и разработки (Dev с горячей перезагрузкой):**
+  ```bash
+  docker compose up
+  ```
+  Код монтируется с хоста, Vite HMR обновляет страницу в реальном времени на `http://localhost:3000`.
+
+* **Для продакшена (Production):**
+  ```bash
+  docker compose --profile prod up -d prod
+  ```
+  Или через сборку стандартного Dockerfile:
+  ```bash
+  docker build --target prod -t vanya-dr-site .
+  docker run -d -p 3000:3000 --name vanya-site vanya-dr-site
+  ```
 
 #### Вариант В: Чистый статический хостинг (Vercel / Netlify / GitHub Pages / Shared hosting)
 Если нужен только статический сайт без своего VPS:
