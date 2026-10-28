@@ -8,7 +8,7 @@ WORKDIR /app
 
 # Устанавливаем зависимости
 COPY package*.json ./
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 # -----------------------------------------------------------------------------
 # 2. Образ для локальной разработки и тестов (Development / Testing)
@@ -46,7 +46,7 @@ ENV PORT=3000
 
 # Устанавливаем зависимости (включая tsx для запуска TypeScript-сервера)
 COPY package*.json ./
-RUN npm install --omit=dev && npm install tsx
+RUN npm install --omit=dev --legacy-peer-deps && npm install tsx --legacy-peer-deps
 
 # Копируем скомпилированный фронтенд из builder
 COPY --from=builder /app/dist ./dist
