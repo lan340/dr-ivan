@@ -10,6 +10,7 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
 const USER_AGENT =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36';
@@ -1621,21 +1622,30 @@ app.get('/api/superfighters.swf', serveLocalSuperfightersSwf);
 app.get('/api/ungrounded.net/575000/575163_Superfighters.swf', serveLocalSuperfightersSwf);
 
 /**
- * Мгновенная локальная заглушка для Newgrounds API Gateway (ngads.com/gateway_v2.php),
- * чтобы Superfighters.swf не ждал ответа от внешнего сервера.
+ * Мгновенная локальная заглушка для Newgrounds API Gateway (ngads.com/gateway_v2.php).
+ * ВАЖНО: Ни в коем случае не возвращать 'movie_version' в ответе, иначе ActionScript-клиент
+ * игры Superfighters считает текущую версию устаревшей и показывает неудаляемое модальное окно
+ * с требованием «скачать новую версию». Без поля movie_version игра сразу запускается в штатном режиме.
  */
-app.all('/api/ngads-gateway*', (_req, res) => {
+app.all('/api/ngads-gateway*', (req, res) => {
   res.setHeader('Content-Type', 'application/json; charset=utf-8');
   res.setHeader('Access-Control-Allow-Origin', '*');
-  return res.send(
-    JSON.stringify({
-      command_id: 'connectMovie',
-      success: 1,
-      movie_name: 'Superfighters',
-      movie_version: '1.41',
-      ad_status: 1,
-    })
-  );
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', '*');
+
+  let commandId = 'connectMovie';
+  if (req.body && typeof req.body === 'object' && req.body.command_id) {
+    commandId = String(req.body.command_id);
+  } else if (req.query && req.query.command_id) {
+    commandId = String(req.query.command_id);
+  }
+
+  return res.json({
+    command_id: commandId,
+    success: 1,
+    movie_name: 'Superfighters',
+    ad_status: 1,
+  });
 });
 
 /**
