@@ -314,7 +314,7 @@ export const GamingBlock: React.FC<GamingBlockProps> = ({
       const updatedBlitz: TankStats = {
         ...content.blitz,
         ...res.stats,
-        funnyTitle: content?.blitz?.funnyTitle || 'Умудряется тащить даже стоя в очереди за кофе с телефона',
+        funnyTitle: content?.blitz?.funnyTitle || 'Умудряется тащить даже в самой проигрышной ситуации',
         sourceUrl: res.sourceUrl,
         isRealData: true,
       };

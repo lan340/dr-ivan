@@ -347,6 +347,69 @@ export const RetroArcadePage: React.FC<RetroArcadePageProps> = ({
   const [selectedGameId, setSelectedGameId] = useState<string>(games[0]?.id || 'tank-trouble-2');
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
+
+  // Видимость верхней и нижней панели в полноэкранном режиме (автоскрытие через 5 сек)
+  const [showFullscreenTopBar, setShowFullscreenTopBar] = useState<boolean>(true);
+  const [showFullscreenBottomBar, setShowFullscreenBottomBar] = useState<boolean>(true);
+  const isHoveringTopRef = useRef<boolean>(false);
+  const isHoveringBottomRef = useRef<boolean>(false);
+  const topHideTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const bottomHideTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const scheduleTopHide = () => {
+    if (topHideTimeoutRef.current) {
+      clearTimeout(topHideTimeoutRef.current);
+    }
+    topHideTimeoutRef.current = setTimeout(() => {
+      if (!isHoveringTopRef.current) {
+        setShowFullscreenTopBar(false);
+      }
+    }, 5000);
+  };
+
+  const scheduleBottomHide = () => {
+    if (bottomHideTimeoutRef.current) {
+      clearTimeout(bottomHideTimeoutRef.current);
+    }
+    bottomHideTimeoutRef.current = setTimeout(() => {
+      if (!isHoveringBottomRef.current) {
+        setShowFullscreenBottomBar(false);
+      }
+    }, 5000);
+  };
+
+  const handleTopMouseEnter = () => {
+    isHoveringTopRef.current = true;
+    setShowFullscreenTopBar(true);
+    if (topHideTimeoutRef.current) {
+      clearTimeout(topHideTimeoutRef.current);
+      topHideTimeoutRef.current = null;
+    }
+  };
+
+  const handleTopMouseLeave = () => {
+    isHoveringTopRef.current = false;
+    if (isFullscreen) {
+      scheduleTopHide();
+    }
+  };
+
+  const handleBottomMouseEnter = () => {
+    isHoveringBottomRef.current = true;
+    setShowFullscreenBottomBar(true);
+    if (bottomHideTimeoutRef.current) {
+      clearTimeout(bottomHideTimeoutRef.current);
+      bottomHideTimeoutRef.current = null;
+    }
+  };
+
+  const handleBottomMouseLeave = () => {
+    isHoveringBottomRef.current = false;
+    if (isFullscreen) {
+      scheduleBottomHide();
+    }
+  };
+
   const [useCleanProxy, setUseCleanProxy] = useState<boolean>(true);
   const [superfightersRenderer, setSuperfightersRenderer] = useState<'wgpu-webgl' | 'canvas' | 'webgpu' | 'auto'>('wgpu-webgl');
   const [iframeKey, setIframeKey] = useState<number>(0);
@@ -436,6 +499,33 @@ export const RetroArcadePage: React.FC<RetroArcadePageProps> = ({
     }
   };
 
+  // Управление показом и автоскрытием панелей при разворачивании на весь экран
+  useEffect(() => {
+    if (isFullscreen) {
+      // При разворачивании на весь экран панели отображаются 5 секунд и затем скрываются
+      setShowFullscreenTopBar(true);
+      setShowFullscreenBottomBar(true);
+      isHoveringTopRef.current = false;
+      isHoveringBottomRef.current = false;
+
+      scheduleTopHide();
+      scheduleBottomHide();
+    } else {
+      // В обычном режиме возвращаем полную видимость панелей
+      setShowFullscreenTopBar(true);
+      setShowFullscreenBottomBar(true);
+      isHoveringTopRef.current = false;
+      isHoveringBottomRef.current = false;
+      if (topHideTimeoutRef.current) clearTimeout(topHideTimeoutRef.current);
+      if (bottomHideTimeoutRef.current) clearTimeout(bottomHideTimeoutRef.current);
+    }
+
+    return () => {
+      if (topHideTimeoutRef.current) clearTimeout(topHideTimeoutRef.current);
+      if (bottomHideTimeoutRef.current) clearTimeout(bottomHideTimeoutRef.current);
+    };
+  }, [isFullscreen]);
+
   // Выход из полноэкранного режима по клавише Escape
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -455,7 +545,7 @@ export const RetroArcadePage: React.FC<RetroArcadePageProps> = ({
   useEffect(() => {
     const handleFullscreenChange = () => {
       if (!document.fullscreenElement && isFullscreen) {
-        // Оставляем возможность как нативного, так и оконного полноэкранного режима
+        setIsFullscreen(false);
       }
     };
     document.addEventListener('fullscreenchange', handleFullscreenChange);
@@ -864,12 +954,34 @@ export const RetroArcadePage: React.FC<RetroArcadePageProps> = ({
         ref={arcadeViewportRef}
         className={
           isFullscreen
-            ? 'fixed inset-0 z-50 bg-slate-950 flex flex-col justify-between p-3 sm:p-5'
-            : 'bg-slate-900/90 border border-slate-800 rounded-xl overflow-hidden shadow-xl'
+            ? 'fixed inset-0 z-50 bg-black flex flex-col justify-between p-0 overflow-hidden select-none w-screen h-screen relative'
+            : 'bg-slate-900/90 border border-slate-800 rounded-xl overflow-hidden shadow-xl relative'
         }
       >
+        {/* Сенсорная полоса наведения у верхнего края в полноэкранном режиме */}
+        {isFullscreen && (
+          <div
+            className="absolute top-0 left-0 right-0 h-12 z-20 pointer-events-auto"
+            onMouseEnter={handleTopMouseEnter}
+            onMouseMove={handleTopMouseEnter}
+            onMouseLeave={handleTopMouseLeave}
+          />
+        )}
+
         {/* Верхняя панель управления игровым экраном */}
-        <div className="flex flex-wrap items-center justify-between gap-4 px-4 sm:px-6 py-4 bg-slate-950/90 border-b border-slate-800">
+        <div
+          onMouseEnter={handleTopMouseEnter}
+          onMouseLeave={handleTopMouseLeave}
+          className={`${
+            isFullscreen
+              ? `absolute top-0 left-0 right-0 z-30 transition-all duration-300 ease-out bg-slate-950/95 backdrop-blur-md border-b border-slate-800/90 shadow-2xl ${
+                  showFullscreenTopBar
+                    ? 'translate-y-0 opacity-100 pointer-events-auto'
+                    : '-translate-y-full opacity-0 pointer-events-none'
+                }`
+              : 'bg-slate-950/90 border-b border-slate-800'
+          } flex flex-wrap items-center justify-between gap-4 px-4 sm:px-6 py-3.5`}
+        >
           <div className="space-y-1">
             <h2 className="text-lg sm:text-xl font-bold text-white flex items-center gap-2.5">
               <Gamepad2 className="w-5 h-5 text-amber-400 shrink-0" />
@@ -972,7 +1084,7 @@ export const RetroArcadePage: React.FC<RetroArcadePageProps> = ({
             }
           }}
           className={`relative bg-black w-full flex items-center justify-center ${
-            isFullscreen ? 'flex-1 min-h-0' : 'aspect-[3/2] min-h-[480px] max-h-[680px]'
+            isFullscreen ? 'w-full h-full flex-1 min-h-0' : 'aspect-[3/2] min-h-[480px] max-h-[680px]'
           }`}
         >
           {!isPlaying ? (
@@ -1034,7 +1146,7 @@ export const RetroArcadePage: React.FC<RetroArcadePageProps> = ({
               ref={iframeRef}
               src={effectiveGameUrl}
               title={activeGame.title}
-              className="w-full h-full border-0 bg-black"
+              className="w-full h-full border-0 bg-black block"
               allow="autoplay; fullscreen; gamepad; clipboard-write"
               referrerPolicy="no-referrer"
               onLoad={focusGameFrame}
@@ -1042,8 +1154,30 @@ export const RetroArcadePage: React.FC<RetroArcadePageProps> = ({
           )}
         </div>
 
+        {/* Сенсорная полоса наведения у нижнего края в полноэкранном режиме */}
+        {isFullscreen && (
+          <div
+            className="absolute bottom-0 left-0 right-0 h-12 z-20 pointer-events-auto"
+            onMouseEnter={handleBottomMouseEnter}
+            onMouseMove={handleBottomMouseEnter}
+            onMouseLeave={handleBottomMouseLeave}
+          />
+        )}
+
         {/* Нижняя подсказка под игровым окном */}
-        <div className="px-4 sm:px-6 py-3 bg-slate-950 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400">
+        <div
+          onMouseEnter={handleBottomMouseEnter}
+          onMouseLeave={handleBottomMouseLeave}
+          className={`${
+            isFullscreen
+              ? `absolute bottom-0 left-0 right-0 z-30 transition-all duration-300 ease-out bg-slate-950/95 backdrop-blur-md border-t border-slate-800/90 shadow-2xl ${
+                  showFullscreenBottomBar
+                    ? 'translate-y-0 opacity-100 pointer-events-auto'
+                    : 'translate-y-full opacity-0 pointer-events-none'
+                }`
+              : 'bg-slate-950 border-t border-slate-800/80'
+          } px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400`}
+        >
           <div className="flex items-center gap-2">
             <Keyboard className="w-4 h-4 text-amber-400 shrink-0" />
             <span>

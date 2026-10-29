@@ -409,7 +409,7 @@ export const GAMING_PRESETS = [
       ratingTitle: 'Мастер взводных нагибов',
       favoriteTanks: ['Progetto 46', 'T-54', 'Kranvagn'],
       medals: ['Герой Расейняя', 'Воин', 'Снайпер'],
-      funnyTitle: 'Умудряется тащить даже стоя в очереди за кофе с телефона',
+      funnyTitle: 'Умудряется тащить даже в самой проигрышной ситуации',
     },
     steam: {
       level: 42,

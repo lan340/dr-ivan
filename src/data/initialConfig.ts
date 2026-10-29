@@ -148,7 +148,7 @@ export const INITIAL_GREETING_CONFIG: GreetingConfig = {
             'Воин (×699)',
             'Основной калибр (×769)',
           ],
-          funnyTitle: 'Умудряется тащить даже стоя в очереди за кофе с телефона',
+          funnyTitle: 'Умудряется тащить даже в самой проигрышной ситуации',
           sourceUrl: 'https://blitz-commander.by/ru/player/28933969',
           isRealData: true,
         },

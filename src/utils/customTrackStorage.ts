@@ -9,7 +9,7 @@ const STORE_NAME = 'tracks';
 const TRACK_KEY = 'original_car_track';
 
 export const DEFAULT_ORIGINAL_TRACK_URL = '/assets/aistudio/____________5d3ff621.mp3';
-export const DEFAULT_ORIGINAL_TRACK_NAME = 'Тёмный дух';
+export const DEFAULT_ORIGINAL_TRACK_NAME = 'Тёмный друн';
 
 export interface StoredTrackInfo {
   audioUrl: string;

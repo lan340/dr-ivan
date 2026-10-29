@@ -11,8 +11,8 @@ import { RetroArcadePage } from './components/RetroArcadePage';
 
 import { resolveSteamAvatarUrl, resolveSteamFrameUrl } from './utils/gamingStats';
 
-const LOCAL_STORAGE_KEY = 'greeting_puzzle_config_v7';
-const UNLOCKED_BLOCKS_KEY = 'greeting_unlocked_blocks_v7';
+const LOCAL_STORAGE_KEY = 'greeting_puzzle_config_v8';
+const UNLOCKED_BLOCKS_KEY = 'greeting_unlocked_blocks_v8';
 
 export default function App() {
   const [activePage, setActivePage] = useState<AppPage>('greeting');
@@ -119,7 +119,7 @@ export default function App() {
                   data: {
                     ...b.data,
                     audioUrl: b.data.audioUrl || '/assets/aistudio/____________5d3ff621.mp3',
-                    trackName: b.data.trackName || 'Тёмный дух',
+                    trackName: b.data.trackName || 'Тёмный друн',
                   },
                 };
               }

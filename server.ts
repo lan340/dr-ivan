@@ -1328,7 +1328,7 @@ app.get('/api/car-audio', (_req, res) => {
         return res.json({
           exists: true,
           audioUrl: `/api/car-audio/stream?v=${meta.updatedAt || 1}`,
-          trackName: meta.trackName || 'Тёмный дух',
+          trackName: meta.trackName || 'Тёмный друн',
         });
       }
     }
@@ -1336,7 +1336,7 @@ app.get('/api/car-audio', (_req, res) => {
       return res.json({
         exists: true,
         audioUrl: `/assets/aistudio/${DEFAULT_UPLOADED_TRACK_FILENAME}`,
-        trackName: 'Тёмный дух',
+        trackName: 'Тёмный друн',
       });
     }
     return res.json({ exists: false });
