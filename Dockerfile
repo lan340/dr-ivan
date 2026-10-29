@@ -44,17 +44,18 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=3000
 
-# Устанавливаем зависимости (включая tsx для запуска TypeScript-сервера)
+# Устанавливаем только production-зависимости (включая tsx)
 COPY package*.json ./
-RUN npm install --omit=dev --legacy-peer-deps && npm install tsx --legacy-peer-deps
+RUN npm install --omit=dev --legacy-peer-deps
 
 # Копируем скомпилированный фронтенд из builder
 COPY --from=builder /app/dist ./dist
 
-# Копируем статические ассеты (игры, Ruffle, звуки) и сервер
+# Копируем статические ассеты (игры, Ruffle, звуки), конфиг и сервер
 COPY --from=builder /app/public ./public
+COPY --from=builder /app/tsconfig.json ./tsconfig.json
 COPY --from=builder /app/server.ts ./server.ts
 
 EXPOSE 3000
 
-CMD ["npx", "tsx", "server.ts"]
+CMD ["./node_modules/.bin/tsx", "server.ts"]

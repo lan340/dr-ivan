@@ -1,0 +1,14 @@
+# Standalone Production Docker Compose
+services:
+  prod:
+    build:
+      context: .
+      target: prod
+    container_name: vanya-dr-prod
+    ports:
+      - "${PORT:-3000}:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+    restart: unless-stopped
