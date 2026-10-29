@@ -11,8 +11,8 @@ import { RetroArcadePage } from './components/RetroArcadePage';
 
 import { resolveSteamAvatarUrl, resolveSteamFrameUrl } from './utils/gamingStats';
 
-const LOCAL_STORAGE_KEY = 'greeting_puzzle_config_v6';
-const UNLOCKED_BLOCKS_KEY = 'greeting_unlocked_blocks_v6';
+const LOCAL_STORAGE_KEY = 'greeting_puzzle_config_v7';
+const UNLOCKED_BLOCKS_KEY = 'greeting_unlocked_blocks_v7';
 
 export default function App() {
   const [activePage, setActivePage] = useState<AppPage>('greeting');

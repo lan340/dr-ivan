@@ -1,0 +1,322 @@
+{
+  "friend": {
+    "name": "Иван",
+    "nickname": "Бро / Легенда",
+    "occasion": "С Днём Рождения, Легенда!",
+    "dateText": "Особый день в календаре",
+    "friendshipDuration": "Много лет дружбы и угара",
+    "avatarEmoji": "⚡"
+  },
+  "blocks": [
+    {
+      "id": "block-letter",
+      "type": "letter",
+      "title": "Персональное письмо имениннику",
+      "subtitle": "Нажми на кнопку снизу, чтобы вскрыть конверт",
+      "order": 1,
+      "data": {
+        "stampText": "TOP SECRET",
+        "salutation": "Даров, Иванус!",
+        "message": [
+          "Если ты читаешь это письмо, значит, еще один год в твоей биографии прожит не зря, а мир стал немного ярче (и громче).",
+          "Этот сайт собран специально для тебя по кусочкам, как небольшой подарок в честь нашей дружбы.",
+          "Осматривайся, надеюсь тебе понравится)"
+        ],
+        "signature": "Твой верный бро",
+        "postScriptum": "P.S. Салют в самом конце обязательно нужно запустить на полную мощность!"
+      }
+    },
+    {
+      "id": "block-car-bass",
+      "type": "car_bass",
+      "title": "Тачка, полный бак & ахуенные басы",
+      "subtitle": "блок #2 • Автомобильное напутствие от души",
+      "order": 2,
+      "data": {
+        "carHeadline": "Чтобы твой верный четырехколесный аппарат дарил только кайф и чистый драйв!",
+        "wishes": [
+          "Пусть твоя машина всегда радует тебя на 100%, заводится с полуоборота в любую погоду, не знает чеков на приборке и никогда не капризничает!",
+          "Пусть на каждой заправке рядом всегда будет качественный, свежий и недорогой бензин, а стрелка уровня топлива всегда радует глаз!",
+          "И самое главное: чтобы сабвуфер всегда радовал ахуенными, сочными и плотными басами, от которых дрожат стекла и мурашки бегут по коже под любимые треки!"
+        ],
+        "specs": [
+          {
+            "label": "Тачка",
+            "value": "Всегда радует и валит",
+            "iconName": "car"
+          },
+          {
+            "label": "Топливо",
+            "value": "Качественный & недорогой бенз",
+            "iconName": "fuel"
+          },
+          {
+            "label": "Сабвуфер",
+            "value": "Ахуенные сочные басы",
+            "iconName": "bass"
+          }
+        ],
+        "bassButtonText": "Врубить ахуенный басс 🔊",
+        "bassTrackNote": "Прокачай сабвуфер на максимум — соседи по потоку оценят!",
+        "imageUrl": "/assets/aistudio/____________c5af8e8e.png",
+        "imageCaption": "Та самая легендарная ласточка · Golf Mk2",
+        "audioUrl": "/assets/aistudio/____________5d3ff621.mp3",
+        "trackName": "Тёмный друн"
+      }
+    },
+    {
+      "id": "block-gaming",
+      "type": "gaming",
+      "title": "Игры, танки & легендарная статистика",
+      "subtitle": "блок #3 • Официальный профиль боевого товарища",
+      "order": 3,
+      "data": {
+        "headline": "Боевая летопись: Мир Танков, Tanks Blitz и библиотека Steam",
+        "tanki": {
+          "nickname": "sherih5",
+          "server": "RU · Lesta Games",
+          "avatarUrl": "/api/steam-avatar?url=https%3A%2F%2Fdav-static.tanki.su%2Fptlru%2Fmt%2Fcurrent%2Fachievement%2Fbig%2FmarkOfMastery4.png",
+          "badgeUrl": "/api/steam-avatar?url=https%3A%2F%2Fdav-static.tanki.su%2Fptlru%2Fmt%2Fcurrent%2Fachievement%2Fbig%2FmedalKolobanov.png",
+          "topTankImageUrl": "/api/steam-avatar?url=https%3A%2F%2Fdav-static.tanki.su%2Fptlru%2Fmt%2Fcurrent%2Fshop%2Fvehicles%2F180x135%2FR60_BT-7A.png",
+          "tankImages": [
+            "/api/steam-avatar?url=https%3A%2F%2Fdav-static.tanki.su%2Fptlru%2Fmt%2Fcurrent%2Fshop%2Fvehicles%2F180x135%2FR60_BT-7A.png",
+            "/api/steam-avatar?url=https%3A%2F%2Fdav-static.tanki.su%2Fptlru%2Fmt%2Fcurrent%2Fshop%2Fvehicles%2F180x135%2FR77_KV2.png",
+            "/api/steam-avatar?url=https%3A%2F%2Fdav-static.tanki.su%2Fptlru%2Fmt%2Fcurrent%2Fshop%2Fvehicles%2F180x135%2FG17_PzIA.png",
+            "/api/steam-avatar?url=https%3A%2F%2Fdav-static.tanki.su%2Fptlru%2Fmt%2Fcurrent%2Fshop%2Fvehicles%2F180x135%2FF62_ELC_AMX.png"
+          ],
+          "battles": 26337,
+          "winrate": 49.06,
+          "avgDamage": 472,
+          "ratingWN8": 1013,
+          "personalRating": 4058,
+          "ratingTitle": "Боец рандома · Рейтинг Lesta: 4 058",
+          "survivalRate": 17.7,
+          "favoriteTanks": [
+            "БТ-7 артиллерийский (1 761 боёв · 53% · 205 ур.)",
+            "КВ-2 (779 боёв · 48% · 850 ур.)",
+            "Pz.Kpfw. I Ausf. C (648 боёв · 52% · 199 ур.)",
+            "AMX ELC bis (599 боёв · 47% · 275 ур.)"
+          ],
+          "medals": [
+            "Знак «Мастер» (66/370 машин)"
+          ],
+          "funnyTitle": "Главный кошмар вражеских статистов и повелитель кустов Малиновки",
+          "sourceUrl": "https://tanki.su/ru/community/accounts/28933969-sherih5/",
+          "kttcUrl": "https://kttc.ru/wot/ru/user/sherih5/",
+          "isRealData": true
+        },
+        "blitz": {
+          "nickname": "sherih5",
+          "accountId": "28933969",
+          "server": "Tanks Blitz · Lesta [GO_ZV]",
+          "avatarUrl": "/api/steam-avatar?url=https%3A%2F%2Fdav-static.tanki.su%2Fptlru%2Fmt%2Fcurrent%2Fachievement%2Fbig%2FmedalKolobanov.png",
+          "badgeUrl": "/api/steam-avatar?url=https%3A%2F%2Fdav-static.tanki.su%2Fptlru%2Fmt%2Fcurrent%2Fachievement%2Fbig%2FmarkOfMastery4.png",
+          "topTankImageUrl": "/api/steam-avatar?url=https%3A%2F%2Fblitz-commander.by%2Fimg%2Ftanks%2FGB48_FV215b_183.webp",
+          "tankImages": [
+            "/api/steam-avatar?url=https%3A%2F%2Fblitz-commander.by%2Fimg%2Ftanks%2FGB48_FV215b_183.webp",
+            "/api/steam-avatar?url=https%3A%2F%2Fblitz-commander.by%2Fimg%2Ftanks%2FMS-11.webp",
+            "/api/steam-avatar?url=https%3A%2F%2Fblitz-commander.by%2Fimg%2Ftanks%2FVK7201.webp",
+            "/api/steam-avatar?url=https%3A%2F%2Fblitz-commander.by%2Fimg%2Ftanks%2FS16_Kranvagn.webp"
+          ],
+          "battles": 17415,
+          "winrate": 62.42,
+          "avgDamage": 2614,
+          "ratingWN8": 2814,
+          "ratingTitle": "Бирюза · Отличный боец (Ср. уровень: 9.2)",
+          "survivalRate": 40.1,
+          "favoriteTanks": [
+            "FV215b (183) (477 боёв · 58% · 2648 ур.)",
+            "МС-11 (360 боёв · 63% · 2544 ур.)",
+            "VK 72.01 (K) (351 боёв · 67% · 3261 ур.)",
+            "Kranvagn (338 боёв · 65% · 3090 ур.)"
+          ],
+          "medals": [
+            "Знак «Мастер» (140 танков)",
+            "Медаль Колобанова (×36)",
+            "Медаль Рэдли-Уолтерса (×141)",
+            "Медаль Пула (×30)",
+            "Воин (×699)",
+            "Основной калибр (×769)"
+          ],
+          "funnyTitle": "Умудряется тащить даже стоя в очереди за кофе с телефона",
+          "sourceUrl": "https://blitz-commander.by/ru/player/28933969",
+          "isRealData": true
+        },
+        "steam": {
+          "steamNick": "H_Y_P_E_R",
+          "steamIdOrUrl": "https://steamcommunity.com/id/1937HYPER",
+          "avatarUrl": "/api/steam-avatar?url=https%3A%2F%2Fshared.fastly.steamstatic.com%2Fcommunity_assets%2Fimages%2Fitems%2F1070330%2F97227479c36b82d531c866562be67193c691a6d5.gif",
+          "avatarFrameUrl": "/api/steam-avatar?url=https%3A%2F%2Fshared.fastly.steamstatic.com%2Fcommunity_assets%2Fimages%2Fitems%2F1070330%2F68f000b0feac0213a64a5d1dc93b2365251874e5.png",
+          "sourceUrl": "https://steamcommunity.com/id/1937HYPER",
+          "level": 31,
+          "totalHours": 549,
+          "ownedGamesCount": 130,
+          "badgesCount": 13,
+          "statusText": "Не в сети · Игр в библиотеке: 130 · Значков: 13",
+          "favoriteGames": [
+            {
+              "name": "War Thunder",
+              "hours": 513,
+              "genre": "Любимая игра витрины"
+            },
+            {
+              "name": "BeamNG.drive",
+              "hours": 24,
+              "genre": "Недавняя активность"
+            },
+            {
+              "name": "Crash Drive 3",
+              "hours": 12,
+              "genre": "Недавняя активность"
+            },
+            {
+              "name": "SULFUR",
+              "hours": 1,
+              "genre": "Недавняя активность"
+            }
+          ],
+          "isRealData": true
+        },
+        "funnyQuotes": [
+          "«Не пробил в борт на кумулятивах — это просто картофельная магия»",
+          "«Еще одну победную катку и точно спать (сказал в 03:45)»"
+        ]
+      }
+    },
+    {
+      "id": "block-achievements",
+      "type": "achievement",
+      "title": "Зал славы: Разблокированные достижения",
+      "subtitle": "блок #4 • Реальные заслуги твоего персонажа",
+      "order": 4,
+      "data": {
+        "subtitle": "Официально подтверждено свидетелями",
+        "items": [
+          {
+            "id": "ach-2",
+            "iconName": "Shield",
+            "badge": "Ранг: Мастер",
+            "title": "Железобетонная надежность",
+            "description": "Если пообещал приехать или помочь — сделает на 100%. Человек, на которого всегда можно положиться."
+          },
+          {
+            "id": "ach-4",
+            "iconName": "Trophy",
+            "badge": "Легендарный уровень",
+            "title": "Мастер выживания и оптимизма",
+            "description": "Прошел через миллион задач сохранив чувство юмора и блеск в глазах."
+          }
+        ]
+      }
+    },
+    {
+      "id": "block-finale",
+      "type": "finale",
+      "title": "Главное пожелание и Кульминация",
+      "subtitle": "Финальный блок • Собери всё воедино",
+      "order": 5,
+      "data": {
+        "heading": "Пусть каждый день будет победным!",
+        "wishes": [
+          "Желаю тебе железного здоровья, грандиозных целей и кайфа от каждого шага к ним!",
+          "Пусть рядом всегда будут свои люди, финансы только умножаются, а поводов для искреннего смеха будет море.",
+          "Никогда не теряй свой фирменный задор и драйв. Ты крутой друг, и мы очень рады, что ты есть!"
+        ],
+        "callToAction": "Запустить праздничный супер-салют! 🎆",
+        "authorNote": "С любовью и уважением, твой лучший друг ❤️"
+      }
+    }
+  ],
+  "retroGames": [
+    {
+      "id": "tank-trouble-2",
+      "title": "Танки в лабиринте 4 (Tank Trouble)",
+      "subtitle": "Локальный мультиплеер до 3 игроков · Классика браузерных баталий",
+      "embedUrl": "https://g2.igroutka.ru/games/72/tanki_labirinte_4/tank-trouble-2/",
+      "proxyUrl": "/api/retro-mirror/tank-trouble-2/index.html",
+      "playersInfo": "1–3 игрока на одной клавиатуре",
+      "eraInfo": "Золотая эра браузерных игр",
+      "description": "Легендарные дуэли танчиков в рикошетном лабиринте, где один шальной снаряд от стены может снести и соперника, и тебя самого за долю секунды до победы.",
+      "controls": [
+        {
+          "playerLabel": "Игрок 1 (Красный танк)",
+          "keys": "↑ ↓ ← → + M (или Пробел)",
+          "actionNote": "Движение стрелками · Огонь клавишей M"
+        },
+        {
+          "playerLabel": "Игрок 2 (Синий танк)",
+          "keys": "E S D F + Q",
+          "actionNote": "Движение E/S/D/F · Огонь клавишей Q"
+        },
+        {
+          "playerLabel": "Игрок 3 / Режим с мышью",
+          "keys": "Мышь + Левый клик",
+          "actionNote": "Наведение курсором · Выстрел ЛКМ"
+        }
+      ],
+      "memories": [
+        {
+          "id": "mem-tt2-1",
+          "title": "Битвы локтями за одной клавиатурой",
+          "tag": "Локальный мультиплеер · Эмоции на пределе",
+          "story": "Помнишь, как мы рубились в Танки в лабиринте за одним компом, когда каждый раунд превращался в дикий азарт, крики «Да как оно срикошетило?!» и охоту за коробками с лазером и самонаводящейся ракетой?",
+          "highlightQuote": "«Не стреляй в упор в стену — сейчас обоих накроет осколками!»"
+        },
+        {
+          "id": "mem-tt2-2",
+          "title": "Закон бумеранга и идеальной геометрии",
+          "tag": "Физика рикошетов · Золотая классика",
+          "story": "Главное правило Tank Trouble: чем дольше ты высчитываешь гениальный угол от трёх стен, тем выше шанс, что твой собственный снаряд вернётся обратно ровно тебе в корму.",
+          "highlightQuote": "«Давай ещё одну партию до 5 побед — и точно реванш!»"
+        }
+      ]
+    },
+    {
+      "id": "superfighters",
+      "title": "Superfighters — Супербойцы",
+      "subtitle": "Культовый Flash-экшен (Ruffle) · Битва на 1–2 игроков за одной клавиатурой",
+      "embedUrl": "https://uploads.ungrounded.net/ruffle_wrapper/ruffleembed.html?v=1.2.4&browsermode=default&props={%22ruffle%22%3A%22%2Fruffle_wrapper%2Flib%2Fruffle.js%3F1792643000%22%2C%22public_path%22%3A%22%2Fruffle_wrapper%2Flib%2F%22%2C%22swf%22%3A%22https%3A%2F%2Fuploads.ungrounded.net%2F575000%2F575163_Superfighters.swf%3F1312207207%22%2C%22vars%22%3A{%22NewgroundsAPI_PublisherID%22%3A1%2C%22NewgroundsAPI_SandboxID%22%3A%226ae0c67aca63f%22%2C%22NewgroundsAPI_SessionID%22%3A%22%22%2C%22NewgroundsAPI_UserName%22%3A%22%26lt%3Bdeleted%26gt%3B%22%2C%22NewgroundsAPI_UserID%22%3A0%2C%22ng_username%22%3A%22%26lt%3Bdeleted%26gt%3B%22}%2C%22width%22%3A800%2C%22height%22%3A600%2C%22icon%22%3A%22https%3A%2F%2Fpicon.ngfiles.com%2F575000%2Fflash_575163_card.png%3Ff1722968853%22%2C%22warnOnUnsupportedContent%22%3Afalse%2C%22external%22%3A%22%2Fruffle_wrapper%2Fexternal%2Fruffle-external-input.js%3F1793097753%22%2C%22externalSettings%22%3A{%22endpoint%22%3A%22https%3A%2F%2Fwww.newgrounds.com%2Fportal%2Fruffle-options%2F193477%22%2C%22types%22%3A[1]}}#",
+      "proxyUrl": "/api/retro-mirror/superfighters/index.html",
+      "playersInfo": "1–2 игрока на одной клавиатуре",
+      "eraInfo": "Легенда Flash (Newgrounds, 2011)",
+      "description": "Безумный пиксельный боевик в духе классических экшенов 80-х: перекаты, прыжки в слоу-мо, перестрелки из-за ящиков, взрывающиеся бочки и эпичные дуэли вдвоём за одним ПК.",
+      "controls": [
+        {
+          "playerLabel": "Игрок 1 (Стрелки)",
+          "keys": "← → ↑ ↓ + N (Удар) · M (Огонь)",
+          "actionNote": "Гранаты: «,» (Б) · Слоу-мо / Бонус: «.» (Ю)"
+        },
+        {
+          "playerLabel": "Игрок 2 (На одной клавиатуре)",
+          "keys": "W A S D + 1 (Удар) · 2 (Огонь)",
+          "actionNote": "Гранаты: 3 · Бонус: 4 (настраивается в Setup)"
+        },
+        {
+          "playerLabel": "Тактические приёмы",
+          "keys": "Разбег + Вниз = Кувырок / Прыжок в укрытие",
+          "actionNote": "Если загорелся — делай перекаты по полу!"
+        }
+      ],
+      "memories": [
+        {
+          "id": "mem-sf-1",
+          "title": "Кинематографичные прыжки и взрывающиеся бочки",
+          "tag": "Экшен на двоих · Чистый адреналин",
+          "story": "В Superfighters каждый раунд длился 20 секунд, но по накалу страстей превосходил любой голливудский блокбастер: прыжок со второго этажа с пулемётом, случайная пуля в красную бочку — и полкарты разносит вдребезги.",
+          "highlightQuote": "«Катись по полу, ты горишь! Не беги ко мне с гранатой!»"
+        },
+        {
+          "id": "mem-sf-2",
+          "title": "Охота за базукой и слоу-мо на последнем миллиметре ХП",
+          "tag": "Легенда Flash · Newgrounds 2011",
+          "story": "Самый напряжённый момент — когда у обоих закончились патроны, сверху падает ящик с гранатомётом, и начинается рукопашная битва со стульями и трубами за право первым добежать до оружия.",
+          "highlightQuote": "«Кто выбил пистолет с одного удара в прыжке — тот и чемпион арены!»"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "theme": "dark",
+    "enableConfetti": true
+  }
+}

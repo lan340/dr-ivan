@@ -14,11 +14,11 @@ import { GreetingConfig } from '../types/greeting';
 export const INITIAL_GREETING_CONFIG: GreetingConfig = {
   // Информация о друге
   friend: {
-    name: 'Артём',
-    nickname: 'Бро / Шеф / Легенда',
+    name: 'Иван',
+    nickname: 'Бро / Легенда',
     occasion: 'С Днём Рождения, Легенда!',
     dateText: 'Особый день в календаре',
-    friendshipDuration: 'Много лет совместных приключений и угара',
+    friendshipDuration: 'Много лет дружбы и угара',
     avatarEmoji: '⚡',
   },
 
@@ -28,17 +28,17 @@ export const INITIAL_GREETING_CONFIG: GreetingConfig = {
       id: 'block-letter',
       type: 'letter',
       title: 'Персональное письмо имениннику',
-      subtitle: 'Нажми на сургучную печать, чтобы вскрыть конверт',
+      subtitle: 'Нажми на кнопку снизу, чтобы вскрыть конверт',
       order: 1,
       data: {
         stampText: 'TOP SECRET',
-        salutation: 'Здорово, дорогой друг!',
+        salutation: 'Даров, Иванус!',
         message: [
           'Если ты читаешь это письмо, значит, еще один год в твоей биографии прожит не зря, а мир стал немного ярче (и громче).',
-          'Этот сайт собран специально для тебя по кусочкам, как пазл из наших общих историй, мемов, побед и эпичных моментов.',
-          'Листай вниз, открывай секретные спойлеры и помни: лучшие приключения у нас еще впереди!'
+          'Этот сайт собран специально для тебя по кусочкам, как небольшой подарок в честь нашей дружбы.',
+          'Осматривайся, надеюсь тебе понравится)'
         ],
-        signature: 'Твой верный бро & банда',
+        signature: 'Твой верный бро',
         postScriptum: 'P.S. Салют в самом конце обязательно нужно запустить на полную мощность!'
       }
     },
@@ -46,7 +46,7 @@ export const INITIAL_GREETING_CONFIG: GreetingConfig = {
       id: 'block-car-bass',
       type: 'car_bass',
       title: 'Тачка, полный бак & ахуенные басы',
-      subtitle: 'Кусочек пазла #2 • Автомобильное напутствие от души',
+      subtitle: 'блок #2 • Автомобильное напутствие от души',
       order: 2,
       data: {
         carHeadline: 'Чтобы твой верный четырехколесный аппарат дарил только кайф и чистый драйв!',
@@ -65,98 +65,125 @@ export const INITIAL_GREETING_CONFIG: GreetingConfig = {
         imageUrl: '/assets/aistudio/____________c5af8e8e.png',
         imageCaption: 'Та самая легендарная ласточка · Golf Mk2',
         audioUrl: '/assets/aistudio/____________5d3ff621.mp3',
-        trackName: 'Тёмный дух'
+        trackName: 'Тёмный друн'
       }
     },
     {
       id: 'block-gaming',
       type: 'gaming',
       title: 'Игры, танки & легендарная статистика',
-      subtitle: 'Кусочек пазла #3 • Официальный профиль боевого товарища',
+      subtitle: 'блок #3 • Официальный профиль боевого товарища',
       order: 3,
       data: {
         headline: 'Боевая летопись: Мир Танков, Tanks Blitz и библиотека Steam',
         tanki: {
-          nickname: 'LeBwa',
-          server: 'RU · Lesta Games [PWNZ]',
+          nickname: 'sherih5',
+          accountId: '28933969',
+          server: 'RU · Lesta Games',
           avatarUrl:
-            '/api/steam-avatar?url=https%3A%2F%2Flesta.ru%2Fclans%2Fmedia%2Fclans%2Femblems%2Fcl_618%2F409618%2Femblem_195x195.png',
+            '/api/steam-avatar?url=https%3A%2F%2Fdav-static.tanki.su%2Fptlru%2Fmt%2Fcurrent%2Fachievement%2Fbig%2FmarkOfMastery4.png',
           badgeUrl:
-            '/api/steam-avatar?url=https%3A%2F%2Fdav-static.tanki.su%2Fptlru%2Fmt%2Fcurrent%2Fachievement%2Fbig%2FmedalKolobanov.png',
-          clanEmblemUrl:
-            '/api/steam-avatar?url=https%3A%2F%2Flesta.ru%2Fclans%2Fmedia%2Fclans%2Femblems%2Fcl_618%2F409618%2Femblem_195x195.png',
+            '/api/steam-avatar?url=https%3A%2F%2Fdav-static.tanki.su%2Fptlru%2Fmt%2Fcurrent%2Fachievement%2Fbig%2FmarkOfMastery4.png',
+          clanEmblemUrl: '',
           topTankImageUrl:
-            '/api/steam-avatar?url=https%3A%2F%2Fdav-static.tanki.su%2Fptlru%2Fmt%2Fcurrent%2Fshop%2Fvehicles%2F180x135%2FR45_IS-7.png',
+            '/api/steam-avatar?url=https%3A%2F%2Fdav-static.tanki.su%2F%2Fptlru%2Fmt%2Fcurrent%2Fshop%2Fvehicles%2F180x135%2FR105_BT_7A.png',
           tankImages: [
-            '/api/steam-avatar?url=https%3A%2F%2Fdav-static.tanki.su%2Fptlru%2Fmt%2Fcurrent%2Fshop%2Fvehicles%2F180x135%2FR45_IS-7.png',
-            '/api/steam-avatar?url=https%3A%2F%2Fdav-static.tanki.su%2Fptlru%2Fmt%2Fcurrent%2Fshop%2Fvehicles%2F180x135%2FF18_Bat_Chatillon25t.png',
-            '/api/steam-avatar?url=https%3A%2F%2Fdav-static.tanki.su%2Fptlru%2Fmt%2Fcurrent%2Fshop%2Fvehicles%2F180x135%2FR97_Object_140.png',
-            '/api/steam-avatar?url=https%3A%2F%2Fblitz-commander.by%2Fimg%2Ftanks%2FGB91_Super_Conqueror.webp',
+            '/api/steam-avatar?url=https%3A%2F%2Fdav-static.tanki.su%2F%2Fptlru%2Fmt%2Fcurrent%2Fshop%2Fvehicles%2F180x135%2FR105_BT_7A.png',
+            '/api/steam-avatar?url=https%3A%2F%2Fdav-static.tanki.su%2F%2Fptlru%2Fmt%2Fcurrent%2Fshop%2Fvehicles%2F180x135%2FR77_KV2.png',
+            '/api/steam-avatar?url=https%3A%2F%2Fdav-static.tanki.su%2F%2Fptlru%2Fmt%2Fcurrent%2Fshop%2Fvehicles%2F180x135%2FG63_PzI_ausf_C.png',
+            '/api/steam-avatar?url=https%3A%2F%2Fdav-static.tanki.su%2F%2Fptlru%2Fmt%2Fcurrent%2Fshop%2Fvehicles%2F180x135%2FF62_ELC_AMX.png',
           ],
-          battles: 73837,
-          winrate: 66.87,
-          avgDamage: 2722,
-          ratingWN8: 3810,
-          personalRating: 13702,
-          ratingTitle: 'Фиолетовый · Уникум · Рейтинг Lesta: 13 702',
-          favoriteTanks: ['ИС-7', 'Bat.-Châtillon 25 t', 'Объект 140', 'Super Conqueror'],
-          medals: ['Знак «Мастер» (271/445 машин)', 'Медаль Колобанова', 'Воин', 'Основной калибр'],
-          survivalRate: 41.2,
-          funnyTitle: 'Главный кошмар вражеских статистов и повелитель кустов Малиновки'
+          battles: 26337,
+          winrate: 49.06,
+          avgDamage: 633,
+          ratingWN8: 1013,
+          personalRating: 4058,
+          ratingTitle: 'Боец рандома · Рейтинг Lesta: 4 058',
+          survivalRate: 17.7,
+          favoriteTanks: [
+            'БТ-7 артиллерийский (1 761 боёв · 53% · 205 ур.)',
+            'КВ-2 (779 боёв · 48% · 850 ур.)',
+            'Pz.Kpfw. I Ausf. C (648 боёв · 52% · 199 ур.)',
+            'AMX ELC bis (599 боёв · 47% · 275 ур.)',
+          ],
+          medals: ['Знак «Мастер» (66/370 машин)'],
+          funnyTitle: 'Главный кошмар вражеских статистов и повелитель кустов Малиновки',
+          sourceUrl: 'https://tanki.su/ru/community/accounts/28933969-sherih5/',
+          kttcUrl: 'https://kttc.ru/wot/ru/user/sherih5/',
+          isRealData: true,
         },
         blitz: {
-          nickname: 'Blitz_Legend_RU',
-          server: 'Tanks Blitz · Lesta RU',
+          nickname: 'sherih5',
+          accountId: '28933969',
+          server: 'Tanks Blitz · Lesta [GO_ZV]',
           avatarUrl:
-            '/api/steam-avatar?url=https%3A%2F%2Fdav-static.tanki.su%2Fptlru%2Fmt%2Fcurrent%2Fachievement%2Fbig%2FheroesOfRassenay.png',
+            '/api/steam-avatar?url=https%3A%2F%2Fdav-static.tanki.su%2Fptlru%2Fmt%2Fcurrent%2Fachievement%2Fbig%2FmedalKolobanov.png',
           badgeUrl:
             '/api/steam-avatar?url=https%3A%2F%2Fdav-static.tanki.su%2Fptlru%2Fmt%2Fcurrent%2Fachievement%2Fbig%2FmarkOfMastery4.png',
           topTankImageUrl:
-            '/api/steam-avatar?url=https%3A%2F%2Fdav-static.tanki.su%2Fptlru%2Fmt%2Fcurrent%2Fshop%2Fvehicles%2F180x135%2FIt13_Progetto_M35_mod_46.png',
+            '/api/steam-avatar?url=https%3A%2F%2Fblitz-commander.by%2Fimg%2Ftanks%2FGB48_FV215b_183.webp',
           tankImages: [
-            '/api/steam-avatar?url=https%3A%2F%2Fdav-static.tanki.su%2Fptlru%2Fmt%2Fcurrent%2Fshop%2Fvehicles%2F180x135%2FIt13_Progetto_M35_mod_46.png',
-            '/api/steam-avatar?url=https%3A%2F%2Fblitz-commander.by%2Fimg%2Ftanks%2FT-54.webp',
+            '/api/steam-avatar?url=https%3A%2F%2Fblitz-commander.by%2Fimg%2Ftanks%2FGB48_FV215b_183.webp',
+            '/api/steam-avatar?url=https%3A%2F%2Fblitz-commander.by%2Fimg%2Ftanks%2FMS-11.webp',
+            '/api/steam-avatar?url=https%3A%2F%2Fblitz-commander.by%2Fimg%2Ftanks%2FVK7201.webp',
             '/api/steam-avatar?url=https%3A%2F%2Fblitz-commander.by%2Fimg%2Ftanks%2FS16_Kranvagn.webp',
-            '/api/steam-avatar?url=https%3A%2F%2Fblitz-commander.by%2Fimg%2Ftanks%2FIS-7.webp',
           ],
-          battles: 12600,
-          winrate: 62.4,
-          avgDamage: 2150,
-          ratingWN8: 2520,
-          ratingTitle: 'Бирюза · Отличный боец',
-          favoriteTanks: ['Progetto 46', 'T-54', 'Kranvagn', 'ИС-7'],
-          medals: ['Герой Расейняя', 'Воин', 'Основной калибр', 'Снайпер'],
-          survivalRate: 44.1,
-          funnyTitle: 'Умудряется тащить даже стоя в очереди за кофе с телефона'
+          battles: 17415,
+          winrate: 62.42,
+          avgDamage: 2614,
+          ratingWN8: 2814,
+          ratingTitle: 'Бирюза · Отличный боец (Ср. уровень: 9.2)',
+          survivalRate: 40.1,
+          favoriteTanks: [
+            'FV215b (183) (477 боёв · 58% · 2648 ур.)',
+            'МС-11 (360 боёв · 63% · 2544 ур.)',
+            'VK 72.01 (K) (351 боёв · 67% · 3261 ур.)',
+            'Kranvagn (338 боёв · 65% · 3090 ур.)',
+          ],
+          medals: [
+            'Знак «Мастер» (140 танков)',
+            'Медаль Колобанова (×36)',
+            'Медаль Рэдли-Уолтерса (×141)',
+            'Медаль Пула (×30)',
+            'Воин (×699)',
+            'Основной калибр (×769)',
+          ],
+          funnyTitle: 'Умудряется тащить даже стоя в очереди за кофе с телефона',
+          sourceUrl: 'https://blitz-commander.by/ru/player/28933969',
+          isRealData: true,
         },
         steam: {
-          steamNick: 'm0NESY',
+          steamNick: 'H_Y_P_E_R',
+          steamIdOrUrl: 'https://steamcommunity.com/id/1937HYPER',
           avatarUrl:
-            '/api/steam-avatar?url=https%3A%2F%2Favatars.fastly.steamstatic.com%2F690a7a2211c8a99f086caae1bbb608826f65eed0_full.jpg',
+            '/api/steam-avatar?url=https%3A%2F%2Fshared.fastly.steamstatic.com%2Fcommunity_assets%2Fimages%2Fitems%2F1070330%2F97227479c36b82d531c866562be67193c691a6d5.gif',
           avatarFrameUrl:
-            '/api/steam-avatar?url=https%3A%2F%2Fshared.akamai.steamstatic.com%2Fcommunity_assets%2Fimages%2Fitems%2F917950%2F82ffa8b2cce18e7239d52f27bb5ba255084596e1.png',
-          sourceUrl: 'https://steamcommunity.com/id/15522194321',
-          level: 91,
-          totalHours: 6199,
-          statusText: 'В сети · Игр в библиотеке: 35 · Значков: 116',
+            '/api/steam-avatar?url=https%3A%2F%2Fshared.fastly.steamstatic.com%2Fcommunity_assets%2Fimages%2Fitems%2F1070330%2F68f000b0feac0213a64a5d1dc93b2365251874e5.png',
+          sourceUrl: 'https://steamcommunity.com/id/1937HYPER',
+          level: 31,
+          totalHours: 549,
+          ownedGamesCount: 130,
+          badgesCount: 13,
+          statusText: 'Не в сети · Игр в библиотеке: 130 · Значков: 13',
           favoriteGames: [
-            { name: 'Counter-Strike 2', hours: 3230, genre: 'Тактический шутер' },
-            { name: 'NARAKA: BLADEPOINT', hours: 2969, genre: 'Экшен' },
-            { name: 'Dota 2', hours: 1450, genre: 'MOBA' },
-            { name: 'Grand Theft Auto V', hours: 580, genre: 'Экшен' }
-          ]
+            { name: 'War Thunder', hours: 513, genre: 'Любимая игра витрины' },
+            { name: 'BeamNG.drive', hours: 24, genre: 'Недавняя активность' },
+            { name: 'Crash Drive 3', hours: 12, genre: 'Недавняя активность' },
+            { name: 'SULFUR', hours: 1, genre: 'Недавняя активность' },
+          ],
+          isRealData: true,
         },
         funnyQuotes: [
           '«Не пробил в борт на кумулятивах — это просто картофельная магия»',
-          '«Еще одну победную катку и точно спать (сказал в 03:45)»'
-        ]
-      }
+          '«Еще одну победную катку и точно спать (сказал в 03:45)»',
+        ],
+      },
     },
     {
       id: 'block-achievements',
       type: 'achievement',
       title: 'Зал славы: Разблокированные достижения',
-      subtitle: 'Кусочек пазла #4 • Реальные заслуги твоего персонажа',
+      subtitle: 'блок #4 • Реальные заслуги твоего персонажа',
       order: 4,
       data: {
         subtitle: 'Официально подтверждено свидетелями',
@@ -166,35 +193,37 @@ export const INITIAL_GREETING_CONFIG: GreetingConfig = {
             iconName: 'Shield',
             badge: 'Ранг: Мастер',
             title: 'Железобетонная надежность',
-            description: 'Если пообещал приехать или помочь — разобьется в лепешку, но сделает. Человек, на которого всегда можно положиться.'
+            description:
+              'Если пообещал приехать или помочь — сделает на 100%. Человек, на которого всегда можно положиться.',
           },
           {
             id: 'ach-4',
             iconName: 'Trophy',
             badge: 'Легендарный уровень',
             title: 'Мастер выживания и оптимизма',
-            description: 'Прошел через миллион задач и дедлайнов, сохранив чувство юмора и блеск в глазах.'
-          }
-        ]
-      }
+            description:
+              'Прошел через миллион задач сохранив чувство юмора и блеск в глазах.',
+          },
+        ],
+      },
     },
     {
       id: 'block-finale',
       type: 'finale',
       title: 'Главное пожелание и Кульминация',
-      subtitle: 'Финальный кусочек пазла • Собери всё воедино',
+      subtitle: 'Финальный блок • Собери всё воедино',
       order: 5,
       data: {
         heading: 'Пусть каждый день будет победным!',
         wishes: [
           'Желаю тебе железного здоровья, грандиозных целей и кайфа от каждого шага к ним!',
           'Пусть рядом всегда будут свои люди, финансы только умножаются, а поводов для искреннего смеха будет море.',
-          'Никогда не теряй свой фирменный задор и драйв. Ты крутой друг, и мы очень рады, что ты есть!'
+          'Никогда не теряй свой фирменный задор и драйв. Ты крутой друг, и мы очень рады, что ты есть!',
         ],
         callToAction: 'Запустить праздничный супер-салют! 🎆',
-        authorNote: 'С любовью и уважением, твой лучший друг ❤️'
-      }
-    }
+        authorNote: 'С любовью и уважением, твой лучший друг ❤️',
+      },
+    },
   ],
 
   retroGames: [
@@ -292,10 +321,4 @@ export const INITIAL_GREETING_CONFIG: GreetingConfig = {
       ],
     },
   ],
-
-  settings: {
-    theme: 'dark',
-    enableConfetti: true,
-  }
 };
-
