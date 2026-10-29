@@ -120,7 +120,10 @@ export async function resolveOriginalCarTrack(
       if (data?.exists && data?.audioUrl) {
         return {
           audioUrl: data.audioUrl,
-          trackName: data.trackName || DEFAULT_ORIGINAL_TRACK_NAME,
+          trackName:
+            !data.trackName || data.trackName === 'Тёмный дух'
+              ? DEFAULT_ORIGINAL_TRACK_NAME
+              : data.trackName,
           isOriginalServerTrack: true,
         };
       }

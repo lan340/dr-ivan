@@ -64,8 +64,13 @@ export const CarBassBlock: React.FC<CarBassBlockProps> = ({
   const [resolvedAudioUrl, setResolvedAudioUrl] = useState<string>(
     content.audioUrl || DEFAULT_ORIGINAL_TRACK_URL
   );
+  const sanitizeTrackName = (name?: string) => {
+    if (!name || name === 'Тёмный дух') return DEFAULT_ORIGINAL_TRACK_NAME;
+    return name;
+  };
+
   const [resolvedTrackName, setResolvedTrackName] = useState<string>(
-    content.trackName || DEFAULT_ORIGINAL_TRACK_NAME
+    sanitizeTrackName(content.trackName)
   );
   const [isOriginalSavedOnServer, setIsOriginalSavedOnServer] = useState(true);
   const [isSavingTrack, setIsSavingTrack] = useState(false);
@@ -95,19 +100,20 @@ export const CarBassBlock: React.FC<CarBassBlockProps> = ({
   // Автоматическая синхронизация загруженной музыки с сервером как постоянного оригинального трека
   useEffect(() => {
     let cancelled = false;
-    resolveOriginalCarTrack(content.audioUrl, content.trackName).then((info) => {
+    resolveOriginalCarTrack(content.audioUrl, sanitizeTrackName(content.trackName)).then((info) => {
       if (cancelled || !info) return;
+      const cleanName = sanitizeTrackName(info.trackName);
       setResolvedAudioUrl(info.audioUrl);
-      setResolvedTrackName(info.trackName);
+      setResolvedTrackName(cleanName);
       setIsOriginalSavedOnServer(Boolean(info.isOriginalServerTrack));
 
       if (
         onUpdateData &&
-        (content.audioUrl !== info.audioUrl || content.trackName !== info.trackName)
+        (content.audioUrl !== info.audioUrl || content.trackName !== cleanName)
       ) {
         onUpdateData({
           audioUrl: info.audioUrl,
-          trackName: info.trackName,
+          trackName: cleanName,
         });
       }
     });
@@ -125,7 +131,7 @@ export const CarBassBlock: React.FC<CarBassBlockProps> = ({
   }, []);
 
   const activeAudioUrl = resolvedAudioUrl || content.audioUrl || DEFAULT_ORIGINAL_TRACK_URL;
-  const activeTrackName = resolvedTrackName || content.trackName || DEFAULT_ORIGINAL_TRACK_NAME;
+  const activeTrackName = sanitizeTrackName(resolvedTrackName || content.trackName);
 
   const handleToggleBass = () => {
     const next = toggleBassAudio(activeAudioUrl, setIsBassActive);
