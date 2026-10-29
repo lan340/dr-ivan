@@ -173,7 +173,7 @@ const SuperfightersDirectPlayer: React.FC<{
 
         if (cancelled) return;
         setProgressPct(92);
-        setStatusText('Подключение движка Ruffle CDN...');
+        setStatusText('Подключение локального движка Ruffle...');
 
         window.RufflePlayer = window.RufflePlayer || {};
         window.RufflePlayer.config = {
@@ -191,9 +191,9 @@ const SuperfightersDirectPlayer: React.FC<{
 
         if (!window.RufflePlayer?.newest) {
           try {
-            await loadScriptElement('https://cdn.jsdelivr.net/npm/@ruffle-rs/ruffle/ruffle.js');
+            await loadScriptElement('/assets/ruffle/ruffle.js');
           } catch {
-            await loadScriptElement('https://unpkg.com/@ruffle-rs/ruffle/ruffle.js');
+            await loadScriptElement('/api/local-ruffle/ruffle.js');
           }
         }
 

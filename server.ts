@@ -1826,17 +1826,13 @@ const serveSuperfightersPlayerHtml = (_req: express.Request, res: express.Respon
           }
           await Promise.all(scriptPromises);
 
-          if (statusText) statusText.textContent = "Подключение движка Ruffle CDN...";
+          if (statusText) statusText.textContent = "Подключение локального движка Ruffle...";
           if (barFill) barFill.style.width = "95%";
 
           try {
-            await addScriptTag("https://cdn.jsdelivr.net/npm/@ruffle-rs/ruffle/ruffle.js");
-          } catch (e1) {
-            try {
-              await addScriptTag("https://unpkg.com/@ruffle-rs/ruffle/ruffle.js");
-            } catch (e2) {
-              await addScriptTag("/assets/ruffle/ruffle.js");
-            }
+            await addScriptTag("/assets/ruffle/ruffle.js");
+          } catch (eLocal) {
+            await addScriptTag("/api/local-ruffle/ruffle.js");
           }
 
           var swfBytes = decodeBase64Parts(window.__SF_SWF_PARTS__ || []);
